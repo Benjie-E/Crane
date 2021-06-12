@@ -1,6 +1,8 @@
 extends Node2D
 
 onready var wheels = [$Wheel1, $Wheel2]
+onready var arm = $Rest/Arm
+onready var body = $Rest/Body
 
 var input = Vector2.ZERO
 
@@ -15,7 +17,8 @@ func _process(delta):
 	handle_input()
 	state_rail()
 	move_by(velocity)
-
+	arm_stretch()
+	process_velocity(delta)
 
 
 func handle_input():
@@ -42,3 +45,28 @@ func connect_to_rail(rail:BezierRail, offset:float):
 	glider.add_child(self)
 	glider.connect_to_rail(rail, offset)
 	position = Vector2.ZERO
+
+func arm_stretch():
+	var distance = Vector2(0,.01)
+	var multi:float = 4
+	var stretch_scale = distance*multi
+	if(input.y>0):
+		arm.scale+=stretch_scale
+		arm.position+=distance
+		$Rest/Claw.position+=distance*256
+	elif(input.y<0):
+		arm.scale-=stretch_scale
+		arm.position-=distance
+		$Rest/Claw.position-=distance*256
+		
+var gravity = 10
+var damping = .995
+var angular_velocity = 0
+var angular_acceleration = 0
+func process_velocity(delta:float)->void:
+	var arm_length = Vector2.ZERO.distance_to($Rest/Claw.position-$Body.position)
+	print(arm_length)
+	var angular_acceleration = ((-gravity*delta) / arm_length) *sin($test.rotation-$Rest.rotation)	#Calculate acceleration (see: http://www.myphysicslab.com/pendulum1.html)
+	angular_velocity += angular_acceleration				#Increment velocity
+	angular_velocity *= damping								#Arbitrary damping
+	$Rest.rotation += angular_velocity
