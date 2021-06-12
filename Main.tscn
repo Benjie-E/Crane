@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Crane.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Track.tscn" type="PackedScene" id=3]
+
+[node name="Node" type="Node"]
+
+[node name="Track" parent="." instance=ExtResource( 3 )]
+position = Vector2( -262, -75 )
+
+[node name="Crane" parent="." instance=ExtResource( 1 )]
+position = Vector2( -147.755, -85.65 )
+
+[node name="Box" parent="." instance=ExtResource( 2 )]
+position = Vector2( 407, 197 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -8, -39 )
+current = true
