@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -111, -38, 0, 0, 0, 0, 0, -77, 0, 0, 0, 0, 79, -135, 0, 0, 0, 0, 154, -51, 0, 0, 0, 0, 238, 57, 0, 0, 0, 0, 189, 193, 0, 0, 0, 0, 311, 152, 0, 0, 0, 0, 417, -98, 0, 0, 0, 0, 270, -153 )
+"points": PoolVector2Array( 0, 0, 0, 0, -111, -38, 88, 127, -88, -127, 0, -77, 0, 0, 0, 0, 79, -135, 0, 0, 0, 0, 154, -51, 0, 0, 0, 0, 238, 57, 0, 0, 0, 0, 189, 193, 119, 134, -119, -134, 311, 152, 0, 0, 0, 0, 417, -98, -92, 162, 92, -162, 270, -153 )
 }
 
 [node name="Node" type="Node"]
@@ -15,20 +15,16 @@ _data = {
 position = Vector2( -262, -75 )
 
 [node name="Crane" parent="." instance=ExtResource( 1 )]
-position = Vector2( -147.755, -85.65 )
+position = Vector2( -238.755, -130.65 )
 
 [node name="Path2D" type="Path2D" parent="Crane"]
-position = Vector2( 147.755, 85.65 )
+position = Vector2( 97.755, 26.65 )
 curve = SubResource( 1 )
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Crane/Path2D"]
-position = Vector2( -111, -38 )
-rotation = -0.337879
 
 [node name="Box" parent="." instance=ExtResource( 2 )]
 position = Vector2( 87, -37 )
 gravity_scale = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -8, -39 )
+position = Vector2( 16, -1 )
 current = true
