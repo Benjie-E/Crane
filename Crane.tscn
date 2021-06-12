@@ -1,17 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Crane.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://vector-illustration-claw-game-device-260nw-264293258.jpg" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 15.2474, 15.3111 )
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=6]
 
-[sub_resource type="AnimatedTexture" id=2]
+[sub_resource type="AnimatedTexture" id=3]
 
-[node name="Crane" type="RigidBody2D"]
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1.44861, -0.0176244, 0, 0, 0, 0, -28.2834, -72.2239, 0, 0, 0, 0, 132.175, -114.226, 0, 0, 0, 0, 15.1347, -84.9661, 0, 0, 0, 0, 31.1806, -63.2571, 0, 0, 0, 0, 74.1268, -73.6397, 0, 0, 0, 0, 39.2035, -27.3899, 0, 0, 0, 0, 87.8129, 33.9618, 0, 0, 0, 0, 141.614, 65.1096, 0, 0, 0, 0, 215.236, 65.5815, 0, 0, 0, 0, 79.79, -33.5251, 0, 0, 0, 0, 218.067, 21.6915 )
+}
+
+[node name="Crane" type="Node2D"]
 position = Vector2( 0, 4.76837e-07 )
 script = ExtResource( 1 )
 
@@ -23,7 +28,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Extender"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Extender"]
 scale = Vector2( 0.5, 0.5 )
@@ -42,8 +47,22 @@ texture = ExtResource( 3 )
 [node name="Bas1e" type="RigidBody2D" parent="."]
 visible = false
 
-[node name="Base" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="Base" type="CollisionShape2D" parent="Bas1e"]
+shape = SubResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="Base"]
-texture = SubResource( 2 )
+[node name="Sprite" type="Sprite" parent="Bas1e/Base"]
+scale = Vector2( 100, 100 )
+texture = SubResource( 3 )
+
+[node name="Path2D" type="Path2D" parent="Bas1e/Base"]
+visible = false
+curve = SubResource( 4 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Bas1e/Base/Path2D"]
+visible = false
+position = Vector2( 132.705, 59.952 )
+rotation = 0.526055
+offset = 611.4
+
+[node name="Polygon2D" type="Polygon2D" parent="Bas1e/Base/Path2D/PathFollow2D"]
+visible = false
