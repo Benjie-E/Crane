@@ -8,22 +8,23 @@ export(float,100) var thickness = 2
 export(Color) var color = Color.white
 
 
-export(NodePath) var start_link setget set_start_node_link
-export(NodePath) var end_link   setget set_end_node_link
+export(NodePath)  var start_link setget set_start_node_link
+export(NodePath)  var end_link   setget set_end_node_link
 
 var start_node = null
 var end_node = null
 
 func set_start_node_link(value):
+	print(value)
 	start_link = value
-	start_node = get_node(value)
+	start_node = get_node(start_link)
 func set_end_node_link(value):
 	end_link = value
 	end_node = get_node(value)
-
+	print(get_children())
+	
 func _ready():
 	buildPolygon()
-
 
 func buildPolygon():
 	var points = self.curve.get_baked_points()

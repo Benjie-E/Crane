@@ -15,25 +15,25 @@ script = ExtResource( 6 )
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
 margin_left = -1600.0
-margin_top = -960.0
+margin_top = -965.006
 margin_right = 1600.0
-margin_bottom = 960.0
+margin_bottom = 954.994
 color = Color( 0.121569, 0.117647, 0.137255, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BezierRail" parent="." instance=ExtResource( 3 )]
+[node name="BezierRail1" parent="." instance=ExtResource( 3 )]
 position = Vector2( -16, -8 )
 curve = ExtResource( 1 )
 color = Color( 0.858824, 0.858824, 0.866667, 1 )
 end_link = NodePath("../BezierRail2")
 
 [node name="BezierRail2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 24, -8 )
+position = Vector2( 23.6663, -8.33371 )
 curve = ExtResource( 4 )
 color = Color( 0.858824, 0.858824, 0.866667, 1 )
-start_link = NodePath("../BezierRail")
+start_link = NodePath("../BezierRail1")
 end_link = NodePath("../BezierRail3")
 
 [node name="BezierRail3" parent="." instance=ExtResource( 3 )]
