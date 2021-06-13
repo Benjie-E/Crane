@@ -15,7 +15,6 @@ var start_node = null
 var end_node = null
 
 func set_start_node_link(value):
-	print(value)
 	start_link = value
 	start_node = get_node(start_link)
 func set_end_node_link(value):

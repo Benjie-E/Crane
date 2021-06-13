@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://PathSections/Section1.tres" type="Curve2D" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -8,16 +8,18 @@
 [ext_resource path="res://Game.gd" type="Script" id=6]
 [ext_resource path="res://Box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Platform.tscn" type="PackedScene" id=8]
+[ext_resource path="res://PathSections/Connection1.tres" type="Curve2D" id=9]
+[ext_resource path="res://PathSections/Connection2.tres" type="Curve2D" id=10]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
-margin_left = -1600.0
-margin_top = -965.006
-margin_right = 1600.0
-margin_bottom = 954.994
+margin_left = -1598.67
+margin_top = -963.671
+margin_right = 1601.33
+margin_bottom = 956.329
 color = Color( 0.121569, 0.117647, 0.137255, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -27,20 +29,36 @@ __meta__ = {
 position = Vector2( -16, -8 )
 curve = ExtResource( 1 )
 color = Color( 0.858824, 0.858824, 0.866667, 1 )
+end_link = NodePath("../Connection1")
+
+[node name="Connection1" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( -16, -8 )
+curve = ExtResource( 9 )
+color = Color( 0.858824, 0.858824, 0.866667, 1 )
+start_link = NodePath("../BezierRail1")
 end_link = NodePath("../BezierRail2")
 
 [node name="BezierRail2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 23.6663, -8.33371 )
 curve = ExtResource( 4 )
 color = Color( 0.858824, 0.858824, 0.866667, 1 )
-start_link = NodePath("../BezierRail1")
+start_link = NodePath("../Connection1")
+end_link = NodePath("../Connection2")
+
+[node name="Connection2" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 51, -16 )
+curve = ExtResource( 10 )
+color = Color( 0.858824, 0.858824, 0.866667, 1 )
+start_link = NodePath("../BezierRail2")
 end_link = NodePath("../BezierRail3")
 
 [node name="BezierRail3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 80, -120 )
 curve = ExtResource( 5 )
 color = Color( 0.858824, 0.858824, 0.866667, 1 )
-start_link = NodePath("../BezierRail2")
+start_link = NodePath("../Connection2")
 
 [node name="Crane" parent="." instance=ExtResource( 2 )]
 position = Vector2( 152, 88 )
