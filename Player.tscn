@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/regular_polygon2d_node/RegularPolygon2D.gd" type="Script" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Crane" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Wheel1" type="Node2D" parent="."]
+position = Vector2( -4, -3 )
+script = ExtResource( 1 )
+centered = true
+num_sides = 6
+size = 4.0
+polygon_color = Color( 0.121569, 0.117647, 0.137255, 1 )
+border_size = 2.0
+border_color = Color( 0.321569, 0.294118, 0.639216, 1 )
+
+[node name="Wheel2" type="Node2D" parent="."]
+position = Vector2( 4, -3 )
+script = ExtResource( 1 )
+centered = true
+num_sides = 6
+size = 4.0
+polygon_color = Color( 0.121569, 0.117647, 0.137255, 1 )
+border_size = 2.0
+border_color = Color( 0.321569, 0.294118, 0.639216, 1 )
+
+[node name="Wheel3" type="Node2D" parent="."]
+position = Vector2( -3.57381, 3.67031 )
+script = ExtResource( 1 )
+centered = true
+num_sides = 6
+size = 4.0
+polygon_color = Color( 0.121569, 0.117647, 0.137255, 1 )
+border_size = 2.0
+border_color = Color( 0.321569, 0.294118, 0.639216, 1 )
+
+[node name="Wheel4" type="Node2D" parent="."]
+position = Vector2( 4.21596, 4.09076 )
+script = ExtResource( 1 )
+centered = true
+num_sides = 6
+size = 4.0
+polygon_color = Color( 0.121569, 0.117647, 0.137255, 1 )
+border_size = 2.0
+border_color = Color( 0.321569, 0.294118, 0.639216, 1 )
+
+[node name="BodyOutline" type="Polygon2D" parent="."]
+color = Color( 0.321569, 0.294118, 0.639216, 1 )
+polygon = PoolVector2Array( 3, -4, 6, -3, 6, 3, 3, 4, -3, 4, -6, 3, -6, -3, -3, -4 )
+
+[node name="Body" type="Polygon2D" parent="."]
+position = Vector2( 1, 1 )
+color = Color( 0.121569, 0.117647, 0.137255, 1 )
+polygon = PoolVector2Array( 1, -4, 4, -3, 4, 1, 1, 2, -3, 2, -6, 1, -6, -3, -3, -4 )
+
+[node name="Rest" type="Node2D" parent="."]
+position = Vector2( 0, 4 )
+scale = Vector2( 0.38892, 0.268454 )
+
+[node name="Arm" type="Polygon2D" parent="Rest"]
+color = Color( 1, 0.2, 0, 1 )
+polygon = PoolVector2Array( -8, 0, 8, 0, 6, 64, -6, 64 )
+
+[node name="Claw" type="KinematicBody2D" parent="Rest"]
+position = Vector2( 2.16213, 74.3328 )
+scale = Vector2( 2.57122, 1.86252 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rest/Claw"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Rest/Claw/CollisionShape2D"]
+color = Color( 0.0784314, 0.823529, 0.968627, 1 )
+texture_offset = Vector2( -100, 0 )
+texture_scale = Vector2( 10, 1 )
+polygon = PoolVector2Array( -10, -10, -10, 10, 10, 10, 10, -10 )

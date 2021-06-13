@@ -1,0 +1,11 @@
+.git/*
+
+# Import cache
+.import/*
+
+# Binaries
+bin/*
+build/*
+lib/*
+
+*tpz*
