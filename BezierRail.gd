@@ -37,3 +37,11 @@ func buildPolygon():
 		table.append(A+offset)
 		table.append(B+offset)
 	drawn.polygon = table
+
+
+func _on_Button_up():
+	visible = false
+
+
+func _on_Button_down():
+	visible = true

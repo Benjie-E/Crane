@@ -22,9 +22,7 @@ func move_by(amount):
 			else:
 				connect_to_rail(get_node(NodePath("../"+String(path.start_link))),1)
 	return offset-last_offset
-func _process(delta):
-	if(Input.get_action_strength("ui_cancel")):
-		get_node(NodePath("../"+String(path.end_link))).visible = true
+	
 func connect_to_rail(rail:BezierRail, unitOffset:float):
 	if(rail!=null&&rail!=path&&rail.visible):
 		if(path!=null):	path.remove_child(self)

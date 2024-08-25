@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://PathSections/Section1.tres" type="Curve2D" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://PathSections/Connection1.tres" type="Curve2D" id=9]
 [ext_resource path="res://PathSections/Connection2.tres" type="Curve2D" id=10]
 [ext_resource path="res://Button.tscn" type="PackedScene" id=11]
+[ext_resource path="res://itch.wav" type="AudioStream" id=12]
+[ext_resource path="res://Label.tscn" type="PackedScene" id=13]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 6 )
@@ -73,19 +75,34 @@ drag_margin_top = 0.75
 drag_margin_right = 0.75
 drag_margin_bottom = 0.75
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Crane"]
+position = Vector2( -152, -88 )
+stream = ExtResource( 12 )
+volume_db = -10.0
+autoplay = true
+
 [node name="Box" parent="." instance=ExtResource( 7 )]
-position = Vector2( 565.669, 90.5129 )
+position = Vector2( 260.981, 143.967 )
 
 [node name="Platform" parent="." instance=ExtResource( 8 )]
-position = Vector2( 647.287, 111.682 )
+position = Vector2( 342.599, 165.136 )
 mode = 1
 gravity_scale = 0.0
 
 [node name="Button" parent="." instance=ExtResource( 11 )]
-position = Vector2( 621.684, 97.549 )
+position = Vector2( 316.996, 151.003 )
 
 [node name="Wall" parent="." instance=ExtResource( 8 )]
-position = Vector2( 735.8, 32.7008 )
+position = Vector2( 431.112, 86.1548 )
 rotation = 1.5708
 mode = 1
 gravity_scale = 0.0
+
+[node name="Label" parent="." instance=ExtResource( 13 )]
+margin_left = 70.2203
+margin_top = 10.124
+margin_right = 310.22
+margin_bottom = 83.124
+
+[connection signal="down" from="Button" to="Connection1" method="_on_Button_down"]
+[connection signal="up" from="Button" to="Connection1" method="_on_Button_up"]
